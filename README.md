@@ -105,9 +105,11 @@ Scan the QR code with Expo Go (Android) or press `a` to open in an Android emula
 
 ### Installing the APK
 
-The production Android APK is committed at `releases/courtly-android.apk` in this repository. To install it on an Android device:
+The production Android APK is committed at `releases/courtly-android.apk` in this repository (via Git LFS, as the file exceeds GitHub's 100MB direct-commit limit). It is also mirrored as a **[GitHub Release](../../releases)** for convenience if Git LFS is not accessible in your environment.
 
-1. Transfer the `.apk` file to the device (via USB, cloud storage, or direct download link from the repo).
+To install it on an Android device:
+
+1. Download the `.apk` file from `releases/courtly-android.apk` in this repo, or from the [Releases](../../releases) page.
 2. On the device, enable **"Install from unknown sources"** for the file manager or browser used to open the APK.
 3. Tap the APK file and follow the installation prompts.
 
