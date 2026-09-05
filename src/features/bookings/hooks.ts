@@ -1,7 +1,13 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { createBooking, getAvailability } from "./api";
-import type { CreateBookingPayload } from "./types";
+import {
+  cancelBooking,
+  createBooking,
+  getAvailability,
+  getBookingDetail,
+  getBookings,
+} from "./api";
+import type { BookingFilterStatus, CreateBookingPayload } from "./types";
 
 export function useAvailability(facilityId: string, date: string) {
   return useQuery({
@@ -21,6 +27,33 @@ export function useCreateBooking(facilityId: string, date: string) {
         queryKey: ["availability", facilityId, date],
       });
       queryClient.invalidateQueries({ queryKey: ["bookings"] });
+    },
+  });
+}
+
+export function useBookings(status: BookingFilterStatus) {
+  return useQuery({
+    queryKey: ["bookings", status],
+    queryFn: () => getBookings(status),
+  });
+}
+
+export function useBookingDetail(id: string) {
+  return useQuery({
+    queryKey: ["booking", id],
+    queryFn: () => getBookingDetail(id),
+    enabled: !!id,
+  });
+}
+
+export function useCancelBooking() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (id: string) => cancelBooking(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["bookings"] });
+      queryClient.invalidateQueries({ queryKey: ["booking"] });
     },
   });
 }
