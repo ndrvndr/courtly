@@ -68,7 +68,6 @@ The task requires at least 2–3 Expo SDK modules beyond core React Native. This
 - The `GET /v1/facilities` endpoint supports `page` and `limit` query parameters for pagination, but these are **not documented in Swagger** — this was discovered by testing directly against the API. Pagination is implemented using `useInfiniteQuery` based on the `pagination` object returned in the response.
 - `avatarUrl` in the user object is currently always `null` from the API (no upload endpoint exists), so no avatar upload UI was built — this is intentional, not an oversight.
 - The booking detail route is `bookings/[id].tsx` (plural) while the create-booking route is `booking/[facilityId].tsx` (singular) — this is intentional, as Expo Router does not support two different dynamic segment names within the same folder level.
-- The Android APK is distributed via a GitHub Release rather than being committed directly into the repository, to avoid bloating the git history with a large binary file. See the [Releases](../../releases) tab of this repository.
 
 ## Getting Started
 
@@ -106,14 +105,12 @@ Scan the QR code with Expo Go (Android) or press `a` to open in an Android emula
 
 ### Installing the APK
 
-The production Android APK is published as a **GitHub Release** on this repository (not committed directly into the project folder, to keep the repo lightweight) — see the **[Releases](../../releases)** tab of this repo, or download it directly from the link in the latest release.
+The production Android APK is committed at `releases/courtly-android.apk` in this repository. To install it on an Android device:
 
-To install it on an Android device:
-
-1. Download the `.apk` file from the GitHub Release onto the device (or transfer it via USB/cloud storage).
+1. Transfer the `.apk` file to the device (via USB, cloud storage, or direct download link from the repo).
 2. On the device, enable **"Install from unknown sources"** for the file manager or browser used to open the APK.
 3. Tap the APK file and follow the installation prompts.
 
 ## Testing Notes
 
-Tested on: _(fill in your actual test device/emulator here, e.g. "Android 14, Samsung Galaxy A54")_
+Tested on: Android 16, POCO F6
