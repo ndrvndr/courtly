@@ -1,10 +1,5 @@
-import { Text, View } from "react-native";
+import { FacilityList } from "@/features/facilities/components/FacilityList";
 
 export default function HomeScreen() {
-  return (
-    <View className="flex-1 items-center justify-center bg-blue-500">
-      <Text className="text-2xl font-bold text-white">Facility List</Text>
-      <Text>TODO: fetch GET /v1/facilities</Text>
-    </View>
-  );
+  return <FacilityList />;
 }
