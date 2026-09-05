@@ -1,25 +1,20 @@
 import { useLocalSearchParams } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 
-export default function BookingScreen() {
+import { BookingScreen } from "@/features/bookings/components/BookingScreen";
+import { useFacilityDetail } from "@/features/facilities/hooks";
+
+export default function BookingRoute() {
   const { facilityId } = useLocalSearchParams<{ facilityId: string }>();
+  const { data, isLoading } = useFacilityDetail(facilityId);
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Booking Flow</Text>
-      <Text>Facility ID: {facilityId}</Text>
-      <Text>TODO: date picker + availability + booking</Text>
-    </View>
-  );
+  if (isLoading || !data) {
+    return (
+      <View className="flex-1 justify-center items-center bg-white">
+        <ActivityIndicator size="large" color="#2563eb" />
+      </View>
+    );
+  }
+
+  return <BookingScreen facilityId={facilityId} facilityName={data.name} />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 8,
-    padding: 24,
-  },
-  title: { fontSize: 20, fontWeight: "600" },
-});
