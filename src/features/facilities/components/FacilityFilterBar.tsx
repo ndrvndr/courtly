@@ -1,13 +1,13 @@
 import { Ionicons } from "@expo/vector-icons";
 import {
-  ActivityIndicator,
   Pressable,
   ScrollView,
   Text,
   TextInput,
-  View,
+  View
 } from "react-native";
 
+import { Skeleton } from "@/components/ui/Skeleton";
 import { useCities, useSports } from "@/features/metadata/hooks";
 
 interface Props {
@@ -43,6 +43,21 @@ function FilterChip({
   );
 }
 
+function ChipRowSkeleton({ widths }: { widths: number[] }) {
+  return (
+    <ScrollView
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      scrollEnabled={false}
+      contentContainerStyle={{ gap: 8, paddingBottom: 8 }}
+    >
+      {widths.map((w, i) => (
+        <Skeleton key={i} width={w} height={30} borderRadius={999} />
+      ))}
+    </ScrollView>
+  );
+}
+
 export function FacilityFilterBar({
   search,
   onSearchChange,
@@ -67,10 +82,7 @@ export function FacilityFilterBar({
       </View>
 
       {sportsLoading ? (
-        <ActivityIndicator
-          size="small"
-          style={{ alignSelf: "flex-start", marginBottom: 8 }}
-        />
+        <ChipRowSkeleton widths={[70, 90, 80, 85, 75]} />
       ) : (
         <ScrollView
           horizontal
@@ -94,7 +106,7 @@ export function FacilityFilterBar({
       )}
 
       {citiesLoading ? (
-        <ActivityIndicator size="small" style={{ alignSelf: "flex-start" }} />
+        <ChipRowSkeleton widths={[75, 100, 95, 90, 100, 85]} />
       ) : (
         <ScrollView
           horizontal
