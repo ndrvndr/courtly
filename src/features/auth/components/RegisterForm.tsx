@@ -35,7 +35,7 @@ export function RegisterForm() {
   };
 
   return (
-    <View className="flex-1 justify-center px-6 bg-white">
+    <View className="justify-center flex-1 px-6 bg-white">
       <Text className="mb-1 text-3xl font-bold">Create Account</Text>
       <Text className="mb-8 text-gray-500">
         Sign up to start booking your favorite courts
@@ -47,7 +47,7 @@ export function RegisterForm() {
         name="name"
         render={({ field: { onChange, value } }) => (
           <TextInput
-            className="px-4 py-3 mb-1 rounded-lg border border-gray-300"
+            className="px-4 py-3 mb-1 text-gray-900 border border-gray-300 rounded-lg"
             placeholder="Jane Doe"
             value={value}
             onChangeText={onChange}
@@ -64,7 +64,7 @@ export function RegisterForm() {
         name="email"
         render={({ field: { onChange, value } }) => (
           <TextInput
-            className="px-4 py-3 mb-1 rounded-lg border border-gray-300"
+            className="px-4 py-3 mb-1 text-gray-900 border border-gray-300 rounded-lg"
             placeholder="you@example.com"
             autoCapitalize="none"
             keyboardType="email-address"
@@ -85,7 +85,7 @@ export function RegisterForm() {
         name="password"
         render={({ field: { onChange, value } }) => (
           <TextInput
-            className="px-4 py-3 mb-1 rounded-lg border border-gray-300"
+            className="px-4 py-3 mb-1 text-gray-900 border border-gray-300 rounded-lg"
             placeholder="Min. 8 characters, with uppercase & number"
             secureTextEntry={!showPassword}
             value={value}

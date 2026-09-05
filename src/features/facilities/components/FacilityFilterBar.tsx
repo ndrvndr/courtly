@@ -1,11 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import {
-  Pressable,
-  ScrollView,
-  Text,
-  TextInput,
-  View
-} from "react-native";
+import { Pressable, ScrollView, Text, TextInput, View } from "react-native";
 
 import { Skeleton } from "@/components/ui/Skeleton";
 import { useCities, useSports } from "@/features/metadata/hooks";
@@ -74,8 +68,9 @@ export function FacilityFilterBar({
       <View className="flex-row items-center px-3 py-2 mb-3 bg-gray-100 rounded-lg">
         <Ionicons name="search" size={18} color="#9ca3af" />
         <TextInput
-          className="flex-1 ml-2"
+          className="flex-1 ml-2 text-sm text-gray-900"
           placeholder="Search facilities..."
+          placeholderTextColor="#9ca3af"
           value={search}
           onChangeText={onSearchChange}
         />

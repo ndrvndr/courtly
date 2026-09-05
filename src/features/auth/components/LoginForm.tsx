@@ -35,7 +35,7 @@ export function LoginForm() {
   };
 
   return (
-    <View className="flex-1 justify-center px-6 bg-white">
+    <View className="justify-center flex-1 px-6 bg-white">
       <Text className="mb-1 text-3xl font-bold">Welcome Back</Text>
       <Text className="mb-8 text-gray-500">
         Sign in to continue booking courts
@@ -47,7 +47,7 @@ export function LoginForm() {
         name="email"
         render={({ field: { onChange, value } }) => (
           <TextInput
-            className="px-4 py-3 mb-1 rounded-lg border border-gray-300"
+            className="px-4 py-3 mb-1 text-gray-900 border border-gray-300 rounded-lg"
             placeholder="you@example.com"
             autoCapitalize="none"
             keyboardType="email-address"
@@ -68,7 +68,7 @@ export function LoginForm() {
         name="password"
         render={({ field: { onChange, value } }) => (
           <TextInput
-            className="px-4 py-3 mb-1 rounded-lg border border-gray-300"
+            className="px-4 py-3 mb-1 text-gray-900 border border-gray-300 rounded-lg"
             placeholder="••••••••"
             secureTextEntry={!showPassword}
             value={value}
