@@ -1,9 +1,16 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 
+import { LogoutButton } from "@/components/ui/LogoutButton";
+
 export default function TabsLayout() {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
+    <Tabs
+      screenOptions={{
+        headerShown: true,
+        headerRight: () => <LogoutButton />,
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
