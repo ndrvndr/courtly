@@ -1,10 +1,10 @@
 import { useState } from "react";
 import {
-    ActivityIndicator,
-    FlatList,
-    RefreshControl,
-    Text,
-    View,
+  ActivityIndicator,
+  FlatList,
+  RefreshControl,
+  Text,
+  View,
 } from "react-native";
 
 import { useDebounce } from "@/hooks/useDebounce";
@@ -16,6 +16,7 @@ import { FacilityFilterBar } from "./FacilityFilterBar";
 export function FacilityList() {
   const [search, setSearch] = useState("");
   const [selectedSport, setSelectedSport] = useState<string | null>(null);
+  const [selectedCity, setSelectedCity] = useState<string | null>(null);
   const debouncedSearch = useDebounce(search, 400);
 
   const {
@@ -30,6 +31,7 @@ export function FacilityList() {
   } = useFacilities({
     search: debouncedSearch || undefined,
     sport: selectedSport || undefined,
+    city: selectedCity || undefined,
   });
 
   const facilities = data?.pages.flatMap((page) => page.data) ?? [];
@@ -41,6 +43,8 @@ export function FacilityList() {
         onSearchChange={setSearch}
         selectedSport={selectedSport}
         onSportChange={setSelectedSport}
+        selectedCity={selectedCity}
+        onCityChange={setSelectedCity}
       />
 
       {isLoading ? (
