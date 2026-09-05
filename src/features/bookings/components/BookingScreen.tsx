@@ -3,8 +3,8 @@ import { router, Stack } from "expo-router";
 import { useState } from "react";
 import { ActivityIndicator, Alert, ScrollView, Text, View } from "react-native";
 
-import { getAuthErrorMessage } from "@/features/auth/hook";
 import { toApiDateString } from "@/utils/formatDate";
+import { getApiErrorMessage } from "@/utils/getApiErrorMessage";
 
 import { useAvailability, useCreateBooking } from "../hooks";
 import type { Slot } from "../types";
@@ -71,7 +71,7 @@ export function BookingScreen({
         },
         onError: (error) => {
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-          Alert.alert("Booking Failed", getAuthErrorMessage(error));
+          Alert.alert("Booking Failed", getApiErrorMessage(error));
           refetch();
         },
       },

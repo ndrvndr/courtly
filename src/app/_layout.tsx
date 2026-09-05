@@ -56,6 +56,10 @@ export default function RootLayout() {
             name="booking/[facilityId]"
             options={{ title: "Book a Court" }}
           />
+          <Stack.Screen
+            name="bookings/[id]"
+            options={{ title: "Booking Detail" }}
+          />
         </Stack>
       </AuthGate>
     </QueryClientProvider>

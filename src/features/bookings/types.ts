@@ -1,3 +1,5 @@
+import { PaginatedResponse } from "@/types/pagination";
+
 export interface Slot {
   startTime: string;
   endTime: string;
@@ -25,20 +27,31 @@ export interface CreateBookingPayload {
   endTime: string;
 }
 
+export type BookingStatus = "CONFIRMED" | "CANCELLED" | "COMPLETED";
+export type BookingFilterStatus = "UPCOMING" | "PAST" | "CANCELLED";
+
 export interface Booking {
   id: string;
-  reference: string;
-  status: string;
-  date: string;
-  startTime: string;
-  endTime: string;
+  bookingReference: string;
+  status: BookingStatus;
+  facility: {
+    id: string;
+    name: string;
+    imageUrl: string;
+  };
   court: {
     id: string;
     name: string;
   };
-  facility: {
-    id: string;
-    name: string;
-  };
-  price: number;
+  date: string;
+  startTime: string;
+  endTime: string;
+  totalPrice: number;
 }
+
+export interface BookingDetail extends Booking {
+  price: number;
+  serviceFee: number;
+}
+
+export type BookingsResponse = PaginatedResponse<Booking>;
