@@ -1,7 +1,11 @@
+import type { z } from "zod";
+import type { loginSchema, registerSchema } from "./schema";
+
 export interface User {
   id: string;
   name: string;
   email: string;
+  avatarUrl?: string | null;
 }
 
 export interface AuthResponse {
@@ -9,19 +13,5 @@ export interface AuthResponse {
   user: User;
 }
 
-export interface RegisterPayload {
-  name: string;
-  email: string;
-  password: string;
-}
-
-export interface LoginPayload {
-  email: string;
-  password: string;
-}
-
-export interface ApiErrorResponse {
-  statusCode: number;
-  message: string | string[];
-  error?: string;
-}
+export type LoginPayload = z.infer<typeof loginSchema>;
+export type RegisterPayload = z.infer<typeof registerSchema>;
