@@ -4,13 +4,16 @@ import { Link } from "expo-router";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
-    ActivityIndicator,
-    Pressable,
-    Text,
-    TextInput,
-    View,
+  ActivityIndicator,
+  Pressable,
+  Text,
+  TextInput,
+  View,
 } from "react-native";
-import { getAuthErrorMessage, useRegister } from "../hook";
+
+import { getApiErrorMessage } from "@/utils/getApiErrorMessage";
+
+import { useRegister } from "../hook";
 import { registerSchema, type RegisterFormValues } from "../schema";
 
 export function RegisterForm() {
@@ -104,7 +107,7 @@ export function RegisterForm() {
 
       {error && (
         <Text className="mb-3 text-sm text-red-500">
-          {getAuthErrorMessage(error)}
+          {getApiErrorMessage(error)}
         </Text>
       )}
 

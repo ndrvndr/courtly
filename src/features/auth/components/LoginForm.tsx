@@ -4,14 +4,16 @@ import { Link } from "expo-router";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
-    ActivityIndicator,
-    Pressable,
-    Text,
-    TextInput,
-    View,
+  ActivityIndicator,
+  Pressable,
+  Text,
+  TextInput,
+  View,
 } from "react-native";
 
-import { getAuthErrorMessage, useLogin } from "../hook";
+import { getApiErrorMessage } from "@/utils/getApiErrorMessage";
+
+import { useLogin } from "../hook";
 import { loginSchema, type LoginFormValues } from "../schema";
 
 export function LoginForm() {
@@ -88,7 +90,7 @@ export function LoginForm() {
 
       {error && (
         <Text className="mb-3 text-sm text-red-500">
-          {getAuthErrorMessage(error)}
+          {getApiErrorMessage(error)}
         </Text>
       )}
 

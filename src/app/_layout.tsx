@@ -37,7 +37,30 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthGate>
-        <Stack screenOptions={{ headerShown: false }} />
+        <Stack
+          screenOptions={{
+            headerShown: true,
+            headerStyle: { backgroundColor: "#ffffff" },
+            headerTintColor: "#111827",
+            headerTitleStyle: { fontWeight: "600", fontSize: 16 },
+            headerShadowVisible: false,
+          }}
+        >
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="facility/[id]"
+            options={{ title: "Facility Detail" }}
+          />
+          <Stack.Screen
+            name="booking/[facilityId]"
+            options={{ title: "Book a Court" }}
+          />
+          <Stack.Screen
+            name="bookings/[id]"
+            options={{ title: "Booking Detail" }}
+          />
+        </Stack>
       </AuthGate>
     </QueryClientProvider>
   );
