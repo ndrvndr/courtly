@@ -1,6 +1,6 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 
-import { getFacilities } from "./api";
+import { getFacilities, getFacilityDetail } from "./api";
 import type { FacilitiesQueryParams } from "./types";
 
 export function useFacilities(params: Omit<FacilitiesQueryParams, "page">) {
@@ -13,5 +13,13 @@ export function useFacilities(params: Omit<FacilitiesQueryParams, "page">) {
       const { page, totalPages } = lastPage.pagination;
       return page < totalPages ? page + 1 : undefined;
     },
+  });
+}
+
+export function useFacilityDetail(id: string) {
+  return useQuery({
+    queryKey: ["facility", id],
+    queryFn: () => getFacilityDetail(id),
+    enabled: !!id,
   });
 }
